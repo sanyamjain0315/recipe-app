@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Sharing Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
@@ -13,8 +13,8 @@
         <h1>Recipe Sharing</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Recipes</a></li>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('recipe') }}">Recipes</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -30,16 +30,13 @@
 
         <section class="featured-recipes">
             <h2>Featured Recipes</h2>
+            {% for recipe in recipes %}
             <div class="recipe-card">
-                <img src="recipe1.jpg" alt="Recipe 1">
-                <h3>Recipe 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <img src="templates/recipe1.jpg" alt="Recipe 1">
+                <h3>{{ recipe.recipe_name }}</h3>
+                <p>{{ recipe.description }}</p>
             </div>
-            <div class="recipe-card">
-                <img src="recipe2.jpg" alt="Recipe 2">
-                <h3>Recipe 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
+            {% endfor %}
         </section>
     </main>
 
@@ -47,7 +44,7 @@
         <p>&copy; 2023 Recipe Sharing. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    
 </body>
 
 </html>
