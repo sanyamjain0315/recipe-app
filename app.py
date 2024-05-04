@@ -23,7 +23,7 @@ collection = db[collection_name]
 def home():
     all_recipes = collection.find({})
     print(all_recipes)
-    return render_template('templates\home.html', recipes=all_recipes)
+    return render_template('url_for(home.html)', recipes=all_recipes)
 
 @app.route('/recipe')
 def recipe():
